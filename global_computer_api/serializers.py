@@ -135,8 +135,13 @@ class ProductSerializer(serializers.ModelSerializer):
     specification = SpecificationSerializer(many=True, read_only=True)
 
     images = ProductImageSerializer(many=True, read_only=True)
+    # uploaded_images = serializers.ListField(
+    #     child = serializers.ImageField(max_length = 1000000, allow_empty_file=False),
+    #     write_only=True
+    # )
+    
     uploaded_images = serializers.ListField(
-        child = serializers.ImageField(max_length = 1000000, allow_empty_file=False),
+        child = serializers.CharField(max_length = 1000000),
         write_only=True
     )
 
@@ -184,8 +189,13 @@ class SingleProductSerializer(serializers.ModelSerializer):
     key_features = KeyFeatureSerializer(many=True, read_only=True)
 
     images = ProductImageSerializer(many=True, read_only=True)
+    # uploaded_images = serializers.ListField(
+    #     child = serializers.ImageField(max_length = 1000000, allow_empty_file=False),
+    #     write_only=True
+    # )
+
     uploaded_images = serializers.ListField(
-        child = serializers.ImageField(max_length = 1000000, allow_empty_file=False),
+        child = serializers.CharField(max_length = 1000000),
         write_only=True
     )
 
@@ -235,8 +245,12 @@ class SingleProductSerializer(serializers.ModelSerializer):
 class SingleProductImageSerializer(serializers.ModelSerializer):
     product_id = serializers.IntegerField()
     image = serializers.StringRelatedField(read_only=True)
+    # uploaded_images = serializers.ListField(
+    #     child = serializers.ImageField(max_length = 1000000, allow_empty_file=False),
+    #     write_only=True
+    # )
     uploaded_images = serializers.ListField(
-        child = serializers.ImageField(max_length = 1000000, allow_empty_file=False),
+        child = serializers.CharField(max_length = 1000000),
         write_only=True
     )
     class Meta:

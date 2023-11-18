@@ -114,7 +114,8 @@ class Product(models.Model):
 # product Images
 class ProductImage(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='images')
-    image = models.ImageField(upload_to='images/products/')
+    # image = models.ImageField(upload_to='images/products/')
+    image = models.CharField(max_length=255)
     
 
 # key features
@@ -163,7 +164,8 @@ class Slider(models.Model):
     mini_text = models.CharField(max_length=255, null=True)
     mid_text = models.CharField(max_length=255, null=True)
     color = models.BooleanField(default=False)
-    image = models.ImageField(upload_to='images/slider')
+    # image = models.ImageField(upload_to='images/slider')
+    image = models.CharField(max_length=255)
 
     def __str__(self) -> str:
         return self.product.title
